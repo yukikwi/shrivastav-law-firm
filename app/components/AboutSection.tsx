@@ -33,7 +33,7 @@ export default function AboutSection() {
             range of practice areas.
           </p>
           <p className="pb-4">
-            Whether you're looking to incorporate a new company, navigate
+            Whether you&#x27;re looking to incorporate a new company, navigate
             complex commercial and corporate matters, or handle family-related
             issues such as marriage, adoption, or wills and estates, we have the
             expertise to guide you through every step. Our expertise also
