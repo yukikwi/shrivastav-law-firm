@@ -1,53 +1,116 @@
+"use client";
+import { SetStateAction, useState } from "react";
 import Image from "next/image";
 
-export default function AboutSection() {
+const teamMembers = [
+  {
+    name: "Binod Kumar Shrivatav",
+    role: "Lawyer",
+    image: "https://yurucamp.jp/third/assets/img/gallery/v2.jpg", // Replace with correct image paths
+    description: "Binod Kumar Shrivatav is an experienced lawyer specializing in corporate law.",
+  },
+  {
+    name: "Member 2",
+    role: "Junior Lawyer",
+    image: "/path/to/member2-image.jpg", // Replace with correct paths for other members
+    description: "Member 2 has expertise in litigation and legal research.",
+  },
+  {
+    name: "Member 3",
+    role: "Senior Advocate",
+    image: "/path/to/member3-image.jpg",
+    description: "Member 3 is a senior advocate with 20 years of experience.",
+  },
+  {
+    name: "Member 4",
+    role: "Consultant",
+    image: "/path/to/member4-image.jpg",
+    description: "Member 4 specializes in legal consulting and advisory services.",
+  },
+  // Add more team members as needed
+];
+
+export default function TeamSection() {
+  const [selectedMember, setSelectedMember] = useState<{
+    name: string;
+    role: string;
+    image: string;
+    description: string;
+  } | null>(null);
+
+  const openModal = (member: {
+    name: string;
+    role: string;
+    image: string;
+    description: string;
+  }) => {
+    setSelectedMember(member);
+  };
+
+  const closeModal = () => {
+    setSelectedMember(null);
+  };
+
   return (
-    <section
-      id="about"
-      className="grid grid-cols-5 gap-4 px-8 py-4 min-h-screen"
-    >
-      {/* About picture */}
-      <div className="col-span-2 relative">
+    <section id="team" className="px-8 py-40 bg-gray-50">
+      <h2 className="text-6xl font-bold mb-20 text-center">Meet Our Team</h2>
+      {/* Grid layout updated for mobile */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {teamMembers.map((member, index) => (
+          <div
+            key={index}
+            className="relative cursor-pointer transition-transform transform hover:scale-105"
+            onClick={() => openModal(member)}
+          >
+            {/* Image box */}
+            <div className="relative w-full border overflow-hidden" style={{ paddingTop: '100%' }}>
+              <Image
+                src={member.image}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover"
+                layout="fill"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+            {/* Name and role below the image */}
+            <div className="mt-4 text-center">
+              <h3 className="text-xl font-semibold">{member.name}</h3>
+              <p className="text-gray-500">{member.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+{/* Modal Popup */}
+{selectedMember && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
+    <div className="bg-white p-8 max-w-lg mx-auto relative transform transition-transform duration-200 scale-105 rounded-sm w-full max-w-md md:max-w-lg overflow-hidden">
+      {/* Close button */}
+      <div className="flex justify-end mb-4">
+        <button
+          className="text-gray-700 hover:text-gray-900 px-2 py-0 rounded-sm border"
+          onClick={closeModal}
+        >
+          X
+        </button>
+      </div>
+      <div className="relative h-60 w-full mb-6 overflow-hidden rounded-sm">
         <Image
-          className="object-cover object-right"
-          src="https://yurucamp.jp/third/assets/img/gallery/v2.jpg"
-          alt="intro picture"
+          className="object-cover"
+          src={selectedMember.image}
+          alt={selectedMember.name}
           fill
         />
       </div>
+      <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
+      <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
+      <p>{selectedMember.description}</p>
+    </div>
+  </div>
+)}
 
-      {/* About content */}
-      <div className="col-span-3 flex flex-col gap-8">
-        <h2 className="text-5xl font-bold">ABOUT</h2>
-        <div>
-          <h2 className="text-5xl">Binod Kumar Shrivatav</h2>
-          <h3 className="text-3xl">Lawyer</h3>
-        </div>
 
-        <div className="text-xl">
-          <p className="pb-4">
-            At <b>Shrivastav Law Firm</b>, we are dedicated to delivering
-            exceptional legal services to our international clientele. Led by
-            CEO Binod Kumar Shrivastav, our team of experienced professionals is
-            committed to providing comprehensive legal solutions across a wide
-            range of practice areas.
-          </p>
-          <p className="pb-4">
-            Whether you&#x27;re looking to incorporate a new company, navigate
-            complex commercial and corporate matters, or handle family-related
-            issues such as marriage, adoption, or wills and estates, we have the
-            expertise to guide you through every step. Our expertise also
-            extends to intellectual property, franchise and licensing,
-            immigration, tax, consumer rights, and criminal law.
-          </p>
-          <p>
-            With a proven track record of success, we pride ourselves on our
-            ability to provide seamless legal assistance to clients around the
-            world. Trust Shrivastav Law Firm to be your reliable partner in
-            navigating the legal landscape in Nepal and beyond.
-          </p>
-        </div>
-      </div>
     </section>
   );
 }
+
