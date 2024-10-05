@@ -42,7 +42,6 @@ export default function TeamSection() {
 
   useLayoutEffect(() => {
     inView(".about-section-motion-text", ({ target }) => {
-      console.log("Inview")
       animate(".about-section-motion-text", { y: [50, 0], opacity: [0, 1] })
     })
   }, [])
