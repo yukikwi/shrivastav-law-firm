@@ -1,6 +1,7 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { animate, inView } from "framer-motion";
 
 const teamMembers = [
   {
@@ -31,12 +32,20 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
+  const sectionElement = useRef<HTMLElement>(null)
   const [selectedMember, setSelectedMember] = useState<{
     name: string;
     role: string;
     image: string;
     description: string;
   } | null>(null);
+
+  useLayoutEffect(() => {
+    inView(".about-section-motion-text", ({ target }) => {
+      console.log("Inview")
+      animate(".about-section-motion-text", { y: [50, 0], opacity: [0, 1] })
+    })
+  }, [])
 
   const openModal = (member: {
     name: string;
@@ -52,8 +61,8 @@ export default function TeamSection() {
   };
 
   return (
-    <section id="team" className="px-8 py-40 bg-gray-50">
-      <h2 className="text-6xl font-bold mb-20 text-center">Meet Our Team</h2>
+    <section ref={sectionElement} id="team" className="px-8 py-40 bg-gray-50">
+      <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
