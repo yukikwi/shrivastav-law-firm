@@ -32,7 +32,7 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
-  const sectionElement = useRef<HTMLElement>(null)
+  const membersContainer = useRef<HTMLDivElement>(null)
   const [selectedMember, setSelectedMember] = useState<{
     name: string;
     role: string;
@@ -41,8 +41,8 @@ export default function TeamSection() {
   } | null>(null);
 
   useLayoutEffect(() => {
-    inView(".about-section-motion-text", ({ target }) => {
-      animate(".about-section-motion-text", { y: [50, 0], opacity: [0, 1] })
+    inView(membersContainer.current as HTMLDivElement, ({ target }) => {
+      animate(".about-section-motion-text", { y: [50, 0], opacity: [0, 1] }, { delay: 0.3 })
     })
   }, [])
 
@@ -60,10 +60,10 @@ export default function TeamSection() {
   };
 
   return (
-    <section ref={sectionElement} id="team" className="px-8 py-40 bg-gray-50">
+    <section id="team" className="px-8 py-40 bg-gray-50">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
           <div
             key={index}
