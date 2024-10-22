@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 import AccordionClient from '../components/AccordionClient'
 import Image from 'next/image'
 import LawImage from '../assets/law_background.webp';
@@ -30,7 +31,8 @@ function WhatWeDo({}: Props) {
   ]
 
   return (
-    <div id="what-we-do" className='dark bg-black min-h-screen text-white'>
+    <div className='dark bg-black min-h-screen text-white'>
+      <Navbar />
       <div className='mx-5'>
         <div className='relative w-full h-[33vh]'>
           <Image
