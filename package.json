@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
+    "@nextui-org/react": "^2.4.8",
     "framer-motion": "^11.11.9",
     "next": "^14.2.14",
     "react": "^18",
