@@ -35,6 +35,7 @@ function Navbar({position}: Props) {
           <a href="#who-we-are" className="nav-motion-text text-lg opacity-0">Who we are</a>
           <a href="#what-we-do" className="nav-motion-text text-lg opacity-0">What we do</a>
           <a href="#team" className="nav-motion-text text-lg opacity-0">Team</a>
+          <a href="#contact-us" className="nav-motion-text text-lg opacity-0">Contact us</a>
         </nav>
 
         {/* Mobile Hamburger Button */}

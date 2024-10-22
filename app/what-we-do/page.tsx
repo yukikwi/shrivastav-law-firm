@@ -30,7 +30,7 @@ function WhatWeDo({}: Props) {
   ]
 
   return (
-    <div className='dark bg-black min-h-screen text-white'>
+    <div id="what-we-do" className='dark bg-black min-h-screen text-white'>
       <div className='mx-5'>
         <div className='relative w-full h-[33vh]'>
           <Image
