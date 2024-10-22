@@ -48,7 +48,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick}: Props) {
         {/* Desktop Menu (hidden on mobile) */}
         <nav className="hidden md:flex md:space-x-8 text-white">
           <a onClick={() => clickFunctionWrapper(whoAreWeClick, '/#who-we-are')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">Who we are</a>
-          <a onClick={() => clickFunctionWrapper(whatWeDoClick, '/404')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">What we do</a>
+          <a onClick={() => clickFunctionWrapper(whatWeDoClick, '/what-we-do')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">What we do</a>
           <a onClick={() => clickFunctionWrapper(teamClick, '/#team')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">Team</a>
         </nav>
 
