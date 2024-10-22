@@ -60,7 +60,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section id="team" className="px-8 py-40 bg-gray-50">
+    <section id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
       <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -116,8 +116,6 @@ export default function TeamSection() {
     </div>
   </div>
 )}
-
-
     </section>
   );
 }

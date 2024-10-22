@@ -1,16 +1,12 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-
 export default function History() {
   return (
-    <div className="bg-gray-800	text-white">
-      <Navbar />
+    <div id="who-we-are" className="py-20 bg-gray-50 text-black">
       <section className="container mx-auto py-6">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-3 px-3">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-8 px-3">
           {/* First part */}
           <div>
-            <h1 className="text-5xl">History.</h1>
-            <p className="mt-5">
+            <h1 className="text-7xl font-bold">Who are we?</h1>
+            <p className="py-10 mt-5 text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin porttitor magna, nec consequat justo pretium vitae. Vestibulum blandit nisi id nunc ultrices condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam a orci facilisis enim accumsan bibendum in in turpis. Aliquam vulputate, risus ornare aliquet placerat, mi orci fringilla ipsum, eget viverra arcu dui id justo. Maecenas suscipit, velit sit amet tempor varius, dolor ipsum faucibus augue, vitae suscipit libero arcu sed risus. Suspendisse lacinia, ligula ac accumsan posuere, nibh metus sollicitudin tellus, nec eleifend nunc urna at turpis. Mauris sit amet tempor eros, blandit interdum sapien. Cras lobortis iaculis ligula, sed rutrum dui egestas vitae. Pellentesque aliquet risus eget vulputate ultricies. In ultrices massa quis tortor fermentum, vitae consectetur enim porta.
             </p>
           </div>
@@ -30,15 +26,12 @@ export default function History() {
             />
           </div>
           <div>
-            <p className="mt-5">
+            <p className="mt-5 text-justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin porttitor magna, nec consequat justo pretium vitae. Vestibulum blandit nisi id nunc ultrices condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam a orci facilisis enim accumsan bibendum in in turpis. Aliquam vulputate, risus ornare aliquet placerat, mi orci fringilla ipsum, eget viverra arcu dui id justo. Maecenas suscipit, velit sit amet tempor varius, dolor ipsum faucibus augue, vitae suscipit libero arcu sed risus. Suspendisse lacinia, ligula ac accumsan posuere, nibh metus sollicitudin tellus, nec eleifend nunc urna at turpis. Mauris sit amet tempor eros, blandit interdum sapien. Cras lobortis iaculis ligula, sed rutrum dui egestas vitae. Pellentesque aliquet risus eget vulputate ultricies. In ultrices massa quis tortor fermentum, vitae consectetur enim porta.
             </p>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
