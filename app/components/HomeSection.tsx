@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import LawImage from '../assets/law_background.webp';
 import { animate, inView } from "framer-motion";
-import Navbar from "./Navbar";
 
 export default function HomeSection() {
   const titleContainer = useRef<HTMLDivElement>(null)
@@ -45,8 +44,6 @@ export default function HomeSection() {
           </p>
         </div>
       </div>
-
-      <Navbar position="absolute" />
     </section>
   );
 }

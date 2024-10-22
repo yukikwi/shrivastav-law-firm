@@ -2,6 +2,7 @@
 import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { animate, inView } from "framer-motion";
+import React from "react";
 
 const teamMembers = [
   {
@@ -31,7 +32,7 @@ const teamMembers = [
   // Add more team members as needed
 ];
 
-export default function TeamSection() {
+export default React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) => {
   const membersContainer = useRef<HTMLDivElement>(null)
   const [selectedMember, setSelectedMember] = useState<{
     name: string;
@@ -60,7 +61,7 @@ export default function TeamSection() {
   };
 
   return (
-    <section id="team" className="px-8 py-40 bg-gray-100">
+    <section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
       <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -89,34 +90,33 @@ export default function TeamSection() {
         ))}
       </div>
 
-{/* Modal Popup */}
-{selectedMember && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
-    <div className="bg-white p-8 max-w-lg mx-auto relative transform transition-transform duration-200 scale-105 rounded-sm w-full max-w-md md:max-w-lg overflow-hidden">
-      {/* Close button */}
-      <div className="flex justify-end mb-4">
-        <button
-          className="text-gray-700 hover:text-gray-900 px-2 py-0 rounded-sm border"
-          onClick={closeModal}
-        >
-          X
-        </button>
-      </div>
-      <div className="relative h-60 w-full mb-6 overflow-hidden rounded-sm">
-        <Image
-          className="object-cover"
-          src={selectedMember.image}
-          alt={selectedMember.name}
-          fill
-        />
-      </div>
-      <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
-      <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
-      <p>{selectedMember.description}</p>
-    </div>
-  </div>
-)}
+      {/* Modal Popup */}
+      {selectedMember && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
+          <div className="bg-white p-8 max-w-lg mx-auto relative transform transition-transform duration-200 scale-105 rounded-sm w-full max-w-md md:max-w-lg overflow-hidden">
+            {/* Close button */}
+            <div className="flex justify-end mb-4">
+              <button
+                className="text-gray-700 hover:text-gray-900 px-2 py-0 rounded-sm border"
+                onClick={closeModal}
+              >
+                X
+              </button>
+            </div>
+            <div className="relative h-60 w-full mb-6 overflow-hidden rounded-sm">
+              <Image
+                className="object-cover"
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                fill
+              />
+            </div>
+            <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
+            <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
+            <p>{selectedMember.description}</p>
+          </div>
+        </div>
+      )}
     </section>
   );
-}
-
+})

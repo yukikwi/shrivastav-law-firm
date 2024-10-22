@@ -1,6 +1,8 @@
-export default function History() {
+import React from "react";
+
+export default React.forwardRef((props, ref:React.ForwardedRef<HTMLDivElement>) => {
   return (
-    <div id="who-we-are" className="py-20 bg-gray-50 text-black">
+    <div ref={ref} id="who-we-are" className="py-20 bg-gray-50 text-black">
       <section className="container mx-auto py-6">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-8 px-3">
           {/* First part */}
@@ -34,4 +36,4 @@ export default function History() {
       </section>
     </div>
   );
-}
+})
