@@ -46,7 +46,7 @@ function WhatWeDo({}: Props) {
         </div>
       </div>
 
-      <div className='container mx-auto'>
+      <div className='container mx-auto p-4'>
         {/* Title */}
         <div className='grid grid-cols-3 my-32'>
           <h1 className='text-6xl col-span-2'>Practice areas.</h1>

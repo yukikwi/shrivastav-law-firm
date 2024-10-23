@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import Logo from "../favicon.ico";
+import Logo from "../assets/Logo_Navbar.png";
 import Image from "next/image";
 import { animate, AnimatePresence, inView, motion } from 'framer-motion';
 import { Router } from 'next/router';
@@ -43,7 +43,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
       <div className={`flex items-center justify-between p-6 w-full ${position === 'absolute'? 'absolute top-0 left-0 right-0 z-20' : ''}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Image className="nav-motion-text opacity-0" src={Logo} alt="Logo" width={36} height={36} />
+          <Image className="nav-motion-text opacity-0 cursor-pointer" src={Logo} alt="Logo" width={56} height={56} onClick={() => router.push('/')} />
         </div>
 
         {/* Desktop Menu (hidden on mobile) */}
