@@ -12,19 +12,23 @@ export default function Home() {
   const router = useRouter()
   const historyElement = useRef<HTMLDivElement>(null)
   const aboutSectionElement = useRef<HTMLElement>(null)
+  const contactSelectionElement = useRef<HTMLElement>(null)
   const handlewhoAreWeClick = () => {
     historyElement.current?.scrollIntoView({ behavior: "smooth" })
   }
   const handleTeamClick = () => {
     aboutSectionElement.current?.scrollIntoView({ behavior: "smooth" })
   }
+  const handleContactUsClick = () => {
+    contactSelectionElement.current?.scrollIntoView({ behavior: "smooth"})
+  }
   return (
     <div className="relative">
-      <Navbar position="absolute" whoAreWeClick={handlewhoAreWeClick} teamClick={handleTeamClick} />
+      <Navbar position="absolute" whoAreWeClick={handlewhoAreWeClick} teamClick={handleTeamClick} contactUs={handleContactUsClick}/>
       <HomeSection />
       <History ref={historyElement} />
       <AboutSection ref={aboutSectionElement} />
-      <ContactSection />
+      <ContactSection ref={contactSelectionElement} />
 
       {/* Footer */}
       <Footer />
