@@ -1,6 +1,6 @@
 import React from "react";
 
-export default React.forwardRef((props, ref:React.ForwardedRef<HTMLElement>) => {
+const ContactSection = React.forwardRef((props, ref:React.ForwardedRef<HTMLElement>) => {
   return (
     <section ref={ref} id="contact-us" className="p-8">
       <h2 className="text-5xl font-bold">CONTACT US</h2>
@@ -11,3 +11,6 @@ export default React.forwardRef((props, ref:React.ForwardedRef<HTMLElement>) => 
     </section>
   );
 })
+
+ContactSection.displayName = "ContactSection"
+export default ContactSection
