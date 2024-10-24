@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import Logo from "../favicon.ico";
+import Logo from "../assets/Logo_Navbar.png";
 import Image from "next/image";
 import { animate, AnimatePresence, inView, motion } from 'framer-motion';
 import { Router } from 'next/router';
@@ -12,9 +12,10 @@ type Props = {
   whoAreWeClick?: () => void
   whatWeDoClick?: () => void
   teamClick?: () => void
+  contactUs?: () => void
 }
 
-function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick}: Props) {
+function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: Props) {
   const router = useRouter()
   const navbarContainer = useRef<HTMLDivElement>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +43,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick}: Props) {
       <div className={`flex items-center justify-between p-6 w-full ${position === 'absolute'? 'absolute top-0 left-0 right-0 z-20' : ''}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Image className="nav-motion-text opacity-0" src={Logo} alt="Logo" width={36} height={36} />
+          <Image className="nav-motion-text opacity-0 cursor-pointer" src={Logo} alt="Logo" width={56} height={56} onClick={() => router.push('/')} />
         </div>
 
         {/* Desktop Menu (hidden on mobile) */}
@@ -50,6 +51,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick}: Props) {
           <a onClick={() => clickFunctionWrapper(whoAreWeClick, '/#who-we-are')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">Who we are</a>
           <a onClick={() => clickFunctionWrapper(whatWeDoClick, '/what-we-do')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">What we do</a>
           <a onClick={() => clickFunctionWrapper(teamClick, '/#team')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">Team</a>
+          <a onClick={() => clickFunctionWrapper(contactUs, '/#contact-us')} className="hover:cursor-pointer nav-motion-text text-lg opacity-0">Contact us</a>
         </nav>
 
         {/* Mobile Hamburger Button */}
@@ -88,7 +90,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick}: Props) {
                 <a href="#who-we-are" className="block">Who we are</a>
                 <a href="#what-we-do" className="block">What we do</a>
                 <a href="#team" className="block">Team</a>
-                <a href="#join-us" className="block">Join us</a>
+                <a href="#contact-us" className="block">Contact us</a>
               </nav>
 
               {/* Language and Get in touch Section */}
