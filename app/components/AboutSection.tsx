@@ -32,7 +32,7 @@ const teamMembers = [
   // Add more team members as needed
 ];
 
-export default React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) => {
+const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) => {
   const membersContainer = useRef<HTMLDivElement>(null)
   const [selectedMember, setSelectedMember] = useState<{
     name: string;
@@ -120,3 +120,7 @@ export default React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) =>
     </section>
   );
 })
+
+AboutSection.displayName = "AboutSection"
+
+export default AboutSection

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default React.forwardRef((props, ref:React.ForwardedRef<HTMLDivElement>) => {
+const HistoryPage = React.forwardRef<HTMLDivElement, unknown>((props, ref) => {
   return (
     <div ref={ref} id="who-we-are" className="py-20 bg-gray-50 text-black">
       <section className="container mx-auto py-6">
@@ -37,3 +37,7 @@ export default React.forwardRef((props, ref:React.ForwardedRef<HTMLDivElement>) 
     </div>
   );
 })
+
+HistoryPage.displayName = "HistoryPage"
+
+export default HistoryPage
