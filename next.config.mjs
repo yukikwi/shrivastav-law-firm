@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+const basePath = process.env.BASE_PATH || ''
+console.log(`Base path: ${basePath}`)
 const nextConfig = {
-  basePath: process.env.BASE_PATH || '',
+  basePath: basePath,
   images: {
     remotePatterns: [
       {
