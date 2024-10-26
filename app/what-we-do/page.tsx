@@ -48,8 +48,8 @@ function WhatWeDo({}: Props) {
 
       <div className='container mx-auto p-4'>
         {/* Title */}
-        <div className='grid grid-cols-3 my-32'>
-          <h1 className='text-6xl col-span-2'>Practice areas.</h1>
+        <div className='grid grid-cols-1 sm:grid-cols-3 my-16 sm:my-32'>
+          <h1 className='text-6xl mb-5 sm:mb-0 sm:col-span-2'>Practice areas.</h1>
           <p>
             Janson constantly monitors the numerous legal, regulatory and technological challenges that businesses are confronted with. As a result thereof, we are able to continuously optimize our services to our clients at today’s pace.
           </p>
