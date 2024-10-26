@@ -66,9 +66,9 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{ opacity: 0 }}
+            initial={{position: 'relative', zIndex: 20, opacity: 0}}
+            animate={{position: 'relative', zIndex: 20,opacity: 1}}
+            exit={{position: 'relative', zIndex: 20, opacity: 0}}
           >
             <div className="fixed inset-0 bg-white text-black z-30 flex flex-col items-center justify-start p-8 md:justify-center md:text-left">
               {/* Close Button */}
