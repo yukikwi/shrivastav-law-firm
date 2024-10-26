@@ -35,6 +35,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
     else{
       callback()
     }
+    setIsMenuOpen(false)
   }
 
   return (
@@ -86,10 +87,10 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
 
               {/* Menu Links */}
               <nav className="space-y-6 mt-12 text-2xl font-light">
-                <a href="#who-we-are" className="block">Who we are</a>
-                <a href="#what-we-do" className="block">What we do</a>
-                <a href="#team" className="block">Team</a>
-                <a href="#contact-us" className="block">Contact us</a>
+                <a onClick={() => clickFunctionWrapper(whoAreWeClick, '/#who-we-are')} className="block">Who we are</a>
+                <a onClick={() => clickFunctionWrapper(whatWeDoClick, '/what-we-do')} className="block">What we do</a>
+                <a onClick={() => clickFunctionWrapper(teamClick, '/#team')} className="block">Team</a>
+                <a onClick={() => clickFunctionWrapper(contactUs, '/#contact-us')} className="block">Contact us</a>
               </nav>
 
               {/* Language and Get in touch Section */}
