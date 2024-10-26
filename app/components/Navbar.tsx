@@ -62,7 +62,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
         </button>
       </div>
 
-      {/* Mobile Full-screen Menu */}
+      {/* Mobile Full-screen Menu :3 */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
