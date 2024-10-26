@@ -38,7 +38,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
   }
 
   return (
-    <div className='relative z-10' ref={navbarContainer}>
+    <div className='relative z-50' ref={navbarContainer}>
       <div className={`flex items-center justify-between p-6 w-full ${position === 'absolute'? 'absolute top-0 left-0 right-0 z-20' : ''}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
