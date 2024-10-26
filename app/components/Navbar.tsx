@@ -4,7 +4,6 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import Logo from "../assets/Logo_Navbar.png";
 import Image from "next/image";
 import { animate, AnimatePresence, inView, motion } from 'framer-motion';
-import { Router } from 'next/router';
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -39,7 +38,7 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
   }
 
   return (
-    <div ref={navbarContainer}>
+    <div className='relative z-10' ref={navbarContainer}>
       <div className={`flex items-center justify-between p-6 w-full ${position === 'absolute'? 'absolute top-0 left-0 right-0 z-20' : ''}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
