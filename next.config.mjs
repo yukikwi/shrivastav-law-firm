@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const basePath = process.env.BASE_PATH || ''
-console.log(`Base path: ${basePath}`)
+const basePath = process.env.BASE_PATH || "";
 const nextConfig = {
   basePath: basePath,
   images: {
