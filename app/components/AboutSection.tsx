@@ -1,6 +1,6 @@
 "use client";
 import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { animate, inView } from "framer-motion";
 import React from "react";
 

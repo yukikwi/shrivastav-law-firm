@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Logo from "../assets/Logo_Large.png";
 
 type Props = {}

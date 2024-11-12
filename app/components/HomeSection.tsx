@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import LawImage from '../assets/law_background.webp';
 import { animate, inView } from "framer-motion";
 

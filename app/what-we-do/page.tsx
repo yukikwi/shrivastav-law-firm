@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import AccordionClient from '../components/AccordionClient'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import LawImage from '../assets/law_background.webp';
 
 type Props = {}

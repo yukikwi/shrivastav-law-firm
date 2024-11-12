@@ -2,7 +2,7 @@
 
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import Logo from "../assets/Logo_Navbar.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { animate, AnimatePresence, inView, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
