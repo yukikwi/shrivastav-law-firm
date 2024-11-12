@@ -2,7 +2,7 @@
 
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import Logo from "../assets/Logo_Navbar.png";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { animate, AnimatePresence, inView, motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -39,11 +39,21 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
   }
 
   return (
-    <div className='relative z-50' ref={navbarContainer}>
+    (<div className='relative z-50' ref={navbarContainer}>
       <div className={`flex items-center justify-between p-6 w-full ${position === 'absolute'? 'absolute top-0 left-0 right-0 z-20' : ''}`}>
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Image className="nav-motion-text opacity-0 cursor-pointer" src={Logo} alt="Logo" width={56} height={56} onClick={() => router.push('/')} />
+          <Image
+            className="nav-motion-text opacity-0 cursor-pointer"
+            src={Logo}
+            alt="Logo"
+            width={56}
+            height={56}
+            onClick={() => router.push('/')}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
 
         {/* Desktop Menu (hidden on mobile) */}
@@ -62,7 +72,6 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
           &#9776;
         </button>
       </div>
-
       {/* Mobile Full-screen Menu :3 */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -82,7 +91,15 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
 
               {/* Logo */}
               <div className="mt-12">
-                <Image src={Logo} alt="Logo" width={36} height={36} />
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  width={36}
+                  height={36}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
 
               {/* Menu Links */}
@@ -101,8 +118,8 @@ function Navbar({position, whoAreWeClick, whatWeDoClick, teamClick, contactUs}: 
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
-  )
+    </div>)
+  );
 }
 
 export default Navbar

@@ -1,17 +1,25 @@
 import React from 'react'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Logo from "../assets/Logo_Large.png";
 
 type Props = {}
 
 function Footer({}: Props) {
   return (
-    <footer className="bg-[#242424] text-white p-8">
+    (<footer className="bg-[#242424] text-white p-8">
       <div className="container mx-auto py-10 px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {/* Logo Section */}
         <div className="flex justify-center md:justify-start">
-          <Image src={Logo} alt="Logo" width={200} height={200} />
+          <Image
+            src={Logo}
+            alt="Logo"
+            width={200}
+            height={200}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
 
         {/* Contact Information Section */}
@@ -50,8 +58,8 @@ function Footer({}: Props) {
           </p>
         </div>
       </div>
-    </footer>
-  )
+    </footer>)
+  );
 }
 
 export default Footer;

@@ -1,6 +1,6 @@
 "use client";
 import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { animate, inView } from "framer-motion";
 import React from "react";
 
@@ -61,7 +61,7 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
   };
 
   return (
-    <section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
+    (<section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
       <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -77,9 +77,8 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
                 src={member.image}
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover"
-                layout="fill"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              />
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             </div>
             {/* Name and role below the image */}
             <div className="mt-4 text-center">
@@ -89,7 +88,6 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           </div>
         ))}
       </div>
-
       {/* Modal Popup */}
       {selectedMember && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
@@ -109,7 +107,10 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
                 src={selectedMember.image}
                 alt={selectedMember.name}
                 fill
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
             <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
             <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
@@ -117,7 +118,7 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           </div>
         </div>
       )}
-    </section>
+    </section>)
   );
 })
 
