@@ -44,9 +44,10 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     (<section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
-      <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div ref={membersContainer} className="flex flex-wrap justify-around gap-10">
         {teamMembers.map((member, index) => (
           <div
+            className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)]"
             key={index}
           >
             {/* Image box */}
