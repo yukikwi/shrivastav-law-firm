@@ -66,11 +66,11 @@ function WhatWeDo({}: Props) {
       </div>
       <div className="container mx-auto p-4">
         {/* Title */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 my-16 sm:my-32">
+        <div className="grid grid-cols-1 sm:grid-cols-4 my-16 sm:my-32">
           <h1 className="text-6xl mb-5 sm:mb-0 sm:col-span-2">
             Practice areas.
           </h1>
-          <p className="text-justify leading-relaxed">
+          <p className="text-justify leading-relaxed sm:col-span-2">
             At our firm, we provide a comprehensive range of legal services designed to address 
             the dynamic challenges faced by individuals and businesses in an ever-evolving world. 
             By staying ahead of regulatory changes, legal developments, and market trends, we ensure 
