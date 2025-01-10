@@ -12,19 +12,16 @@ const teamMembers = [
     name: "Binod Kumar Shrivatav",
     role: "Lawyer",
     image: Binod,
-    description: "Binod Kumar Shrivatav is an experienced lawyer specializing in corporate law.",
   },
   {
-    name: "Member 2",
+    name: "Bipana Nepal",
     role: "Lawyer",
     image: Bipana,
-    description: "Member 2 has expertise in litigation and legal research.",
   },
   {
-    name: "Member 3",
+    name: "Bima Tamang",
     role: "Receptionist",
     image: Bima,
-    description: "Member 3 is a senior advocate with 20 years of experience.",
   },
 ];
 
@@ -43,28 +40,14 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     })
   }, [])
 
-  const openModal = (member: {
-    name: string;
-    role: string;
-    image: string;
-    description: string;
-  }) => {
-    setSelectedMember(member);
-  };
-
-  const closeModal = () => {
-    setSelectedMember(null);
-  };
-
   return (
     (<section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
       {/* Grid layout updated for mobile */}
-      <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div ref={membersContainer} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="relative cursor-pointer transition-transform transform hover:scale-105"
           >
             {/* Image box */}
             <div className="relative w-full border overflow-hidden" style={{ paddingTop: '100%' }}>

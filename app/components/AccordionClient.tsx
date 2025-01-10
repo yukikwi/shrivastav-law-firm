@@ -8,7 +8,6 @@ type Props = {
   items: Array<{
     title: string
     description: string
-    url: string
   }>
 }
 
