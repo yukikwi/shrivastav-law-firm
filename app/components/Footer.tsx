@@ -26,13 +26,10 @@ function Footer({}: Props) {
         <div className="flex flex-col items-center md:items-start">
         <span className="font-bold text-[#B4B4B4]">PHONE</span>
           <p>
-            Office : <a href="tel:+3226753030" className="underline">+32 2 675 30 30</a>
+            Office : <a href="tel:+3226753030" className="underline">+97712022381</a>
           </p>
           <p>
-            Mobile : <a href="tel:+3292407720" className="underline">+32 9 240 77 20</a>
-          </p>
-          <p>
-            Office : <a href="tel:+3265221000" className="underline">+32 65 22 10 00</a>
+            Mobile : <a href="tel:+3292407720" className="underline">+9779851067091</a>
           </p>
           <span className="font-bold text-[#B4B4B4] pt-6">EMAIL</span>
           <ul>

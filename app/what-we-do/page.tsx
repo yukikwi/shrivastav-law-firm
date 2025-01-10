@@ -9,27 +9,40 @@ type Props = {};
 function WhatWeDo({}: Props) {
   const accordianRecord = [
     {
-      title: "Africa",
+      title: "Supreme Court and High Court",
       description:
-        "Throughout its more than 70 years of existence, our firm has built significant expertise and experience across the African continent. This has led Janson to profound knowledge of the various legal systems in Africa, its markets and rich local cultures. All this combined makes Janson your ideal partner for your dealings in Africa.",
-      url: "https://github.com/yukikwi/shrivastav-law-firm",
+        "Our firm offers expert legal representation and consultancy for cases in the Supreme and High Courts. With decades of experience, we provide strategic and meticulous guidance for civil, criminal, and constitutional matters. We are dedicated to achieving favorable outcomes for our clients in cases of national and international significance."
     },
     {
-      title: "Banking & finance",
+      title: "Tax and Commercial Matters",
       description:
-        "\
-        Janson’s Banking & Finance practice enjoys a stellar reputation in Belgium and abroad. <br /> \
-        <br />\
-        The practice deals with all matters related to banking and finance going from advice on financial and banking operations, market penetration of banking products, regulatory advice and compliance to litigation matters in the widest sense of the word. <br />\
-        <br />\
-        Our banking and finance services also encompass the fields of securities and asset management. <br /> \
-        <br />\
-        Janson’s lawyers represent numerous banks and financial institutions, as well as asset and wealth managers before regulatory bodies, courts and arbitral tribunals. <br /> \
-        <br />\
-        Many of our Banking & Finance practitioners give lectures and publish scientific articles within their field of expertise.  These subject matter experts are regularly consulted by clients, governmental bodies and peers to draft legal opinions on various banking and finance topics.\
-      ",
-      url: "https://github.com/yukikwi/shrivastav-law-firm",
+        "We provide comprehensive legal services for tax-related issues, commercial and corporate work, and business compliance. Our expertise encompasses tax planning, dispute resolution, drafting and reviewing commercial contracts, and ensuring regulatory compliance. We aim to streamline business operations and provide effective solutions to complex tax and corporate challenges."
     },
+    {
+      title: "Police, Criminal Law, and Government Affairs",
+      description:
+        "Our team offers robust legal support for matters involving police, criminal law, bail applications, and dealings with government departments. Whether facing charges or navigating administrative procedures, we ensure fair treatment, timely resolutions, and protection of our clients' rights through dedicated advocacy."
+    },
+    {
+      title: "Family Law and Personal Matters",
+      description:
+        "We provide compassionate and professional legal assistance for family-related matters, including adoption, marriage registration (domestic and international), custody disputes, and inheritance issues. Additionally, we specialize in drafting wills, establishing trusts, and managing estate planning, ensuring your personal and family interests are safeguarded with utmost care."
+    },
+    {
+      title: "Intellectual Property and Franchise Licensing",
+      description:
+        "Our firm offers comprehensive intellectual property services, including registration, litigation, and enforcement of trademarks, copyrights, and patents. We also provide expert legal guidance on franchise and licensing agreements, ensuring protection of your business interests and intellectual assets."
+    },
+    {
+      title: "Immigration and International Trade",
+      description:
+        "We deliver expert legal advice on immigration matters, including visa applications, permanent residency, and compliance with immigration laws in Nepal and abroad. Our services also cover international trade, contract negotiation, dispute resolution, and ensuring adherence to cross-border trade regulations."
+    },
+    {
+      title: "Consumer Rights and Litigation",
+      description:
+        "We advocate for the protection of consumer rights and provide strong legal representation in litigation against unfair practices. Our team is committed to ensuring justice and equitable treatment for consumers in disputes with businesses or service providers."
+    }
   ];
 
   return (
@@ -57,11 +70,12 @@ function WhatWeDo({}: Props) {
           <h1 className="text-6xl mb-5 sm:mb-0 sm:col-span-2">
             Practice areas.
           </h1>
-          <p>
-            Janson constantly monitors the numerous legal, regulatory and
-            technological challenges that businesses are confronted with. As a
-            result thereof, we are able to continuously optimize our services to
-            our clients at today’s pace.
+          <p className="text-justify leading-relaxed">
+            At our firm, we provide a comprehensive range of legal services designed to address 
+            the dynamic challenges faced by individuals and businesses in an ever-evolving world. 
+            By staying ahead of regulatory changes, legal developments, and market trends, we ensure 
+            our clients receive tailored, effective, and timely solutions. Our commitment to excellence 
+            enables us to support our clients’ goals while safeguarding their rights and interests.
           </p>
         </div>
 

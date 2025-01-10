@@ -1,21 +1,26 @@
 import React from "react";
+const imgUrl1 = new URL('../assets/aboutus_image_1.jpg', import.meta.url).href;
+const imgUrl2 = new URL('../assets/aboutus_image_2.webp', import.meta.url).href;
 
 const HistoryPage = React.forwardRef<HTMLDivElement, unknown>((props, ref) => {
   return (
     <div ref={ref} id="who-we-are" className="py-20 bg-gray-50 text-black">
       <section className="container mx-auto py-6 p-4">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-8 px-3">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-8 px-3">
           {/* First part */}
-          <div>
+          <div className="flex flex-col justify-start">
             <h1 className="text-7xl font-bold">Who are we?</h1>
             <p className="py-10 mt-5 text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin porttitor magna, nec consequat justo pretium vitae. Vestibulum blandit nisi id nunc ultrices condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam a orci facilisis enim accumsan bibendum in in turpis. Aliquam vulputate, risus ornare aliquet placerat, mi orci fringilla ipsum, eget viverra arcu dui id justo. Maecenas suscipit, velit sit amet tempor varius, dolor ipsum faucibus augue, vitae suscipit libero arcu sed risus. Suspendisse lacinia, ligula ac accumsan posuere, nibh metus sollicitudin tellus, nec eleifend nunc urna at turpis. Mauris sit amet tempor eros, blandit interdum sapien. Cras lobortis iaculis ligula, sed rutrum dui egestas vitae. Pellentesque aliquet risus eget vulputate ultricies. In ultrices massa quis tortor fermentum, vitae consectetur enim porta.
+            At Shrivastav Law firm, we take pride in being a trusted legal partner based in Nepal, committed to delivering exceptional legal services tailored to meet the diverse needs of our clients.
+            Our team of experienced and dedicated legal professionals specializes in providing comprehensive solutions across a wide array of legal sectors.
+            From corporate law and dispute resolution to property matters, intellectual property, and beyond, we are here to ensure that you receive expert guidance and representation. 
+            Whether you are an individual, a business, or an organization, we are dedicated to safeguarding your rights and interests.
             </p>
           </div>
           {/* Picture */}
-          <div>
+          <div className="flex items-start">
             <img
-              src="https://media.istockphoto.com/id/1418210562/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AA%E0%B8%B1%E0%B8%95%E0%B8%A7%E0%B9%8C%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B8%A3%E0%B8%B2%E0%B8%8B%E0%B8%B4%E0%B8%A5-capybara-hydrochoerus-hydrochaeris.jpg?s=612x612&w=0&k=20&c=l2udQna5DyljUD-WMyv9WkFdWk9Tgpte8MUbiqPAJo8="
+              src={imgUrl1}
               alt="Picture 1"
             />
           </div>
@@ -23,13 +28,15 @@ const HistoryPage = React.forwardRef<HTMLDivElement, unknown>((props, ref) => {
           {/* Second part */}
           <div className="mt-5">
             <img
-              src="https://media.istockphoto.com/id/1418210562/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AA%E0%B8%B1%E0%B8%95%E0%B8%A7%E0%B9%8C%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%9A%E0%B8%A3%E0%B8%B2%E0%B8%8B%E0%B8%B4%E0%B8%A5-capybara-hydrochoerus-hydrochaeris.jpg?s=612x612&w=0&k=20&c=l2udQna5DyljUD-WMyv9WkFdWk9Tgpte8MUbiqPAJo8="
+              src={imgUrl2}
               alt="Picture 1"
             />
           </div>
           <div>
             <p className="mt-5 text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin porttitor magna, nec consequat justo pretium vitae. Vestibulum blandit nisi id nunc ultrices condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam a orci facilisis enim accumsan bibendum in in turpis. Aliquam vulputate, risus ornare aliquet placerat, mi orci fringilla ipsum, eget viverra arcu dui id justo. Maecenas suscipit, velit sit amet tempor varius, dolor ipsum faucibus augue, vitae suscipit libero arcu sed risus. Suspendisse lacinia, ligula ac accumsan posuere, nibh metus sollicitudin tellus, nec eleifend nunc urna at turpis. Mauris sit amet tempor eros, blandit interdum sapien. Cras lobortis iaculis ligula, sed rutrum dui egestas vitae. Pellentesque aliquet risus eget vulputate ultricies. In ultrices massa quis tortor fermentum, vitae consectetur enim porta.
+            Our services extend beyond national boundaries, catering to both local and international clients.
+            We understand the unique challenges faced by global entities operating in Nepal and are adept at navigating the complexities of cross-border legal matters. 
+            With a focus on integrity, professionalism, and client satisfaction, we strive to build lasting relationships through results-driven solutions. Let us be your partner in navigating the ever-evolving legal landscape with confidence and ease.
             </p>
           </div>
         </div>

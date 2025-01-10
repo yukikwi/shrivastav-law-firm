@@ -18,16 +18,6 @@ function AccordionClient({ items }: Props) {
       {items.map((item, index) => (
         <AccordionItem key={index} aria-label={item.title} title={item.title}>
           <p dangerouslySetInnerHTML={{__html: item.description}}></p>
-
-          <Link
-            className='my-5'
-            isExternal
-            showAnchorIcon
-            href={item.url}
-            anchorIcon={<Icon size={1} path={mdiArrowRightThin} />}
-          >
-            Discover more
-          </Link>
         </AccordionItem>
       ))}
     </Accordion>

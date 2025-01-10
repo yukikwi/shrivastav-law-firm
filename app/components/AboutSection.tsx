@@ -3,33 +3,29 @@ import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { animate, inView } from "framer-motion";
 import React from "react";
+import Binod from "../assets/binod.jpg";
+import Bipana from "../assets/bipana.jpg";
+import Bima from "../assets/bima.jpg";
 
 const teamMembers = [
   {
     name: "Binod Kumar Shrivatav",
     role: "Lawyer",
-    image: "https://yurucamp.jp/third/assets/img/gallery/v2.jpg", // Replace with correct image paths
+    image: Binod,
     description: "Binod Kumar Shrivatav is an experienced lawyer specializing in corporate law.",
   },
   {
     name: "Member 2",
-    role: "Junior Lawyer",
-    image: "/path/to/member2-image.jpg", // Replace with correct paths for other members
+    role: "Lawyer",
+    image: Bipana,
     description: "Member 2 has expertise in litigation and legal research.",
   },
   {
     name: "Member 3",
-    role: "Senior Advocate",
-    image: "/path/to/member3-image.jpg",
+    role: "Receptionist",
+    image: Bima,
     description: "Member 3 is a senior advocate with 20 years of experience.",
   },
-  {
-    name: "Member 4",
-    role: "Consultant",
-    image: "/path/to/member4-image.jpg",
-    description: "Member 4 specializes in legal consulting and advisory services.",
-  },
-  // Add more team members as needed
 ];
 
 const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) => {
@@ -69,7 +65,6 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           <div
             key={index}
             className="relative cursor-pointer transition-transform transform hover:scale-105"
-            onClick={() => openModal(member)}
           >
             {/* Image box */}
             <div className="relative w-full border overflow-hidden" style={{ paddingTop: '100%' }}>
@@ -88,36 +83,6 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           </div>
         ))}
       </div>
-      {/* Modal Popup */}
-      {selectedMember && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
-          <div className="bg-white p-8 max-w-lg mx-auto relative transform transition-transform duration-200 scale-105 rounded-sm w-full max-w-md md:max-w-lg overflow-hidden">
-            {/* Close button */}
-            <div className="flex justify-end mb-4">
-              <button
-                className="text-gray-700 hover:text-gray-900 px-2 py-0 rounded-sm border"
-                onClick={closeModal}
-              >
-                X
-              </button>
-            </div>
-            <div className="relative h-60 w-full mb-6 overflow-hidden rounded-sm">
-              <Image
-                className="object-cover"
-                src={selectedMember.image}
-                alt={selectedMember.name}
-                fill
-                style={{
-                  maxWidth: "100%",
-                  height: "auto"
-                }} />
-            </div>
-            <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
-            <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
-            <p>{selectedMember.description}</p>
-          </div>
-        </div>
-      )}
     </section>)
   );
 })
