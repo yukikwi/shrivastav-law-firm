@@ -45,13 +45,10 @@ function Footer({}: Props) {
         <div className="flex flex-col items-center md:items-end text-center md:text-right">
         <span className="font-bold text-[#B4B4B4]">ADRESS</span>
         <p>
-            Bla bla
+            Saraswati Marg, Tripureshwor
           </p>
           <p>
-            Bla bla
-          </p>
-          <p>
-            Kathmandu
+            Kathmandu, 44600
           </p>
         </div>
       </div>
