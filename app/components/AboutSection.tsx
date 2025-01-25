@@ -1,14 +1,30 @@
 "use client";
 
-import { SetStateAction, useLayoutEffect, useRef, useState, useEffect } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
-import { animate, inView, motion, AnimatePresence } from "framer-motion";
+import { animate, inView, motion } from "framer-motion";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@heroui/react";
 import React from "react";
 import Binod from "../assets/binod.jpg";
 import Bipana from "../assets/bipana.jpg";
 import Bima from "../assets/bima.jpg";
 
-const teamMembers = [
+type MemberInfo = {
+  name: string;
+  role: string;
+  image: StaticImageData;
+  description: string;
+}
+
+const teamMembers: Array<MemberInfo> = [
   {
     name: "Binod Kumar Shrivatav",
     role: "Lawyer",
@@ -34,27 +50,8 @@ const teamMembers = [
 
 const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElement>) => {
   const membersContainer = useRef<HTMLDivElement>(null);
-  const [selectedMember, setSelectedMember] = useState<{
-    name: string;
-    role: string;
-    image: StaticImageData;
-    description: string;
-  } | null>(null);
-
-  // Listen for browser history changes
-  useEffect(() => {
-    const handlePopState = () => {
-      if (selectedMember) {
-        setSelectedMember(null);
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [selectedMember]);
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [selectedMember, setSelectedMember] = useState<MemberInfo | null>(null);
 
   useLayoutEffect(() => {
     inView(membersContainer.current as HTMLDivElement, ({ target }) => {
@@ -62,26 +59,10 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     });
   }, []);
 
-  const openModal = (member: {
-    name: string;
-    role: string;
-    image: StaticImageData;
-    description: string;
-  }) => {
-    setSelectedMember(member);
-    history.pushState(null, "", window.location.href); // Push state to track modal open
-  };
-
-  const closeModal = () => {
-    setSelectedMember(null);
-    history.back(); // Go back in history
-  };
-
-  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
+  const handleMemberClick = (member: MemberInfo) => {
+    setSelectedMember(member)
+    onOpen()
+  }
 
   return (
     <section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
@@ -105,7 +86,7 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           <div
             className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)] relative cursor-pointer transition-transform transform hover:scale-105"
             key={index}
-            onClick={() => openModal(member)}
+            onClick={() => handleMemberClick(member)}
           >
             {/* Image box */}
             <div
@@ -129,50 +110,30 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
         ))}
         </div>
       </motion.div>
-      {/* Modal Popup */}
-      <AnimatePresence>
-        {selectedMember && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-             // Close modal when clicking outside
-            onClick={handleBackgroundClick}
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
-              <div className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden">
-                <motion.div
-                  initial={{ y: -50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ type: "spring", stiffness: 100 }}
-                >
-                  {/* Close button */}
-                  <div className="flex justify-end mb-4">
-                    <button
-                      className="text-gray-700 hover:text-gray-900 px-2 py-0 border"
-                      onClick={closeModal}
-                    >
-                      X
-                    </button>
-                  </div>
-                  <div className="relative h-60 w-full mb-6 overflow-hidden">
-                    <Image
-                      className="object-cover"
-                      src={selectedMember.image}
-                      alt={selectedMember.name}
-                      fill
-                    />
-                  </div>
-                  <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
-                  <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
-                  <p>{selectedMember.description}</p>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Modal popup */}
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} onClose={() => setSelectedMember(null)}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1"></ModalHeader>
+              <ModalBody>
+                <div className="relative h-60 w-full mb-6 overflow-hidden">
+                  <Image
+                    className="object-cover"
+                    src={selectedMember!.image}
+                    alt={selectedMember!.name}
+                    fill
+                  />
+                </div>
+                <h2 className="text-3xl font-bold mb-2">{selectedMember!.name}</h2>
+                <h3 className="text-xl mb-4 text-gray-700">{selectedMember!.role}</h3>
+                <p>{selectedMember!.description}</p>
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      {/* Legacy Modal Popup */}
     </section>
   );
 });
