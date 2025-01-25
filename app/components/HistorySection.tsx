@@ -11,10 +11,9 @@ const HistoryPage = React.forwardRef<HTMLDivElement, unknown>((props, ref) => {
           <div className="flex flex-col justify-start">
             <h1 className="text-7xl font-bold">Who are we?</h1>
             <p className="py-10 mt-5 text-justify">
-            At Shrivastav Law firm, we take pride in being a trusted legal partner based in Nepal, committed to delivering exceptional legal services tailored to meet the diverse needs of our clients.
-            Our team of experienced and dedicated legal professionals specializes in providing comprehensive solutions across a wide array of legal sectors.
-            From corporate law and dispute resolution to property matters, intellectual property, and beyond, we are here to ensure that you receive expert guidance and representation. 
-            Whether you are an individual, a business, or an organization, we are dedicated to safeguarding your rights and interests.
+              At Shrivastav Law Firm, we take pride in being a trusted legal partner in Nepal. Led by our CEO, Mr. Binod Kumar Shrivastav, a lawyer with 28 years of experience, we have helped countless companies establish their businesses in Nepal while providing guidance in various other legal sectors. His expertise has made us a go-to firm for businesses and individuals alike.
+
+              Our team specializes in corporate law, dispute resolution, property matters, intellectual property, and more. We are dedicated to safeguarding your rights and delivering solutions tailored to your needs.
             </p>
           </div>
           {/* Picture */}
