@@ -133,41 +133,40 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
       <AnimatePresence>
         {selectedMember && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-             // Close modal when clicking outside
-            onClick={handleBackgroundClick}
           >
-            <div className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden">
-              <motion.div
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -50, opacity: 0 }}
-                transition={{ type: "spring", stiffness: 100 }}
-              >
-                {/* Close button */}
-                <div className="flex justify-end mb-4">
-                  <button
-                    className="text-gray-700 hover:text-gray-900 px-2 py-0 border"
-                    onClick={closeModal}
-                  >
-                    X
-                  </button>
-                </div>
-                <div className="relative h-60 w-full mb-6 overflow-hidden">
-                  <Image
-                    className="object-cover"
-                    src={selectedMember.image}
-                    alt={selectedMember.name}
-                    fill
-                  />
-                </div>
-                <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
-                <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
-                <p>{selectedMember.description}</p>
-              </motion.div>
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
+              <div className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden" onClick={handleBackgroundClick}>
+                <motion.div
+                  initial={{ y: -50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 100 }}
+                >
+                  {/* Close button */}
+                  <div className="flex justify-end mb-4">
+                    <button
+                      className="text-gray-700 hover:text-gray-900 px-2 py-0 border"
+                      onClick={closeModal}
+                    >
+                      X
+                    </button>
+                  </div>
+                  <div className="relative h-60 w-full mb-6 overflow-hidden">
+                    <Image
+                      className="object-cover"
+                      src={selectedMember.image}
+                      alt={selectedMember.name}
+                      fill
+                    />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
+                  <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
+                  <p>{selectedMember.description}</p>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
