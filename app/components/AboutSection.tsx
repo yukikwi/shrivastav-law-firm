@@ -1,6 +1,6 @@
 "use client";
 
-import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
+import { SetStateAction, useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import { animate, inView, motion, AnimatePresence } from "framer-motion";
 import React from "react";
@@ -41,6 +41,21 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     description: string;
   } | null>(null);
 
+  // Listen for browser history changes
+  useEffect(() => {
+    const handlePopState = () => {
+      if (selectedMember) {
+        setSelectedMember(null);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedMember]);
+
   useLayoutEffect(() => {
     inView(membersContainer.current as HTMLDivElement, ({ target }) => {
       animate(".about-section-motion-text", { y: [50, 0], opacity: [0, 1] }, { delay: 0.3 });
@@ -54,10 +69,18 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     description: string;
   }) => {
     setSelectedMember(member);
+    history.pushState(null, "", window.location.href); // Push state to track modal open
   };
 
   const closeModal = () => {
     setSelectedMember(null);
+    history.back(); // Go back in history
+  };
+
+  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
   };
 
   return (
@@ -71,14 +94,13 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           Meet Our Team
         </h2>
       </motion.div>
-      {/* Grid layout updated for mobile */}
       <motion.div
         ref={membersContainer}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="flex flex-wrap justify-around gap-10"
       >
+        <div className="flex flex-wrap justify-around gap-10">
         {teamMembers.map((member, index) => (
           <div
             className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)] relative cursor-pointer transition-transform transform hover:scale-105"
@@ -105,15 +127,18 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
             </div>
           </div>
         ))}
+        </div>
       </motion.div>
       {/* Modal Popup */}
       <AnimatePresence>
         {selectedMember && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+             // Close modal when clicking outside
+            onClick={handleBackgroundClick}
           >
             <div className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden">
               <motion.div
