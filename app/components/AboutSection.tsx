@@ -1,4 +1,5 @@
 "use client";
+
 import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { animate, inView, motion, AnimatePresence } from "framer-motion";
@@ -61,11 +62,23 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
 
   return (
     <section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
-      <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">
-        Meet Our Team
-      </h2>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">
+          Meet Our Team
+        </h2>
+      </motion.div>
       {/* Grid layout updated for mobile */}
-      <div ref={membersContainer} className="flex flex-wrap justify-around gap-10">
+      <motion.div
+        ref={membersContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="flex flex-wrap justify-around gap-10"
+      >
         {teamMembers.map((member, index) => (
           <div
             className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)] relative cursor-pointer transition-transform transform hover:scale-105"
@@ -92,7 +105,7 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
       {/* Modal Popup */}
       <AnimatePresence>
         {selectedMember && (
@@ -102,34 +115,35 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.div
-              className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden"
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -50, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 100 }}
-            >
-              {/* Close button */}
-              <div className="flex justify-end mb-4">
-                <button
-                  className="text-gray-700 hover:text-gray-900 px-2 py-0 border"
-                  onClick={closeModal}
-                >
-                  X
-                </button>
-              </div>
-              <div className="relative h-60 w-full mb-6 overflow-hidden">
-                <Image
-                  className="object-cover"
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  fill
-                />
-              </div>
-              <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
-              <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
-              <p>{selectedMember.description}</p>
-            </motion.div>
+            <div className="bg-white p-8 max-w-lg mx-auto relative w-full max-w-md md:max-w-lg overflow-hidden">
+              <motion.div
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -50, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 100 }}
+              >
+                {/* Close button */}
+                <div className="flex justify-end mb-4">
+                  <button
+                    className="text-gray-700 hover:text-gray-900 px-2 py-0 border"
+                    onClick={closeModal}
+                  >
+                    X
+                  </button>
+                </div>
+                <div className="relative h-60 w-full mb-6 overflow-hidden">
+                  <Image
+                    className="object-cover"
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    fill
+                  />
+                </div>
+                <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
+                <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
+                <p>{selectedMember.description}</p>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
