@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Accordion, AccordionItem, Link } from '@nextui-org/react'
+import { Accordion, AccordionItem, Link } from "@heroui/react"
 import Icon from '@mdi/react';
 import { mdiArrowRightThin } from '@mdi/js';
 

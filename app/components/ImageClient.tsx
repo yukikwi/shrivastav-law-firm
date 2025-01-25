@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Image } from '@nextui-org/react'
+import { Image } from "@heroui/react"
 
 type Props = React.ComponentProps<typeof Image>
 
