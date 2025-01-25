@@ -1,6 +1,6 @@
 "use client";
 import { SetStateAction, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { animate, inView } from "framer-motion";
 import React from "react";
 import Binod from "../assets/binod.jpg";
@@ -12,16 +12,19 @@ const teamMembers = [
     name: "Binod Kumar Shrivatav",
     role: "Lawyer",
     image: Binod,
+    description: "Binod Kumar Shrivastav is a seasoned corporate lawyer with over 28 years of experience in providing expert legal guidance to businesses and individuals. A graduate of Tribhuvan University, he has been instrumental in helping countless companies establish their presence in Nepal, while excelling in various legal sectors such as corporate law, business setup, and dispute resolution. His deep expertise and commitment to excellence have earned him a reputation as a trusted legal advisor in the industry.",
   },
   {
     name: "Bipana Nepal",
     role: "Lawyer",
     image: Bipana,
+    description: "Bipana Nepal is a legal professional at Shrivastav Law Firm, where she has been contributing her skills and dedication for the past few years. Recently graduating with a law degree, she brings fresh perspectives and a strong commitment to providing effective legal support across various sectors.",
   },
   {
     name: "Bima Tamang",
     role: "Receptionist",
     image: Bima,
+    description: "Bima Tamang is the friendly and efficient receptionist at Shrivastav Law Firm, ensuring smooth communication and a welcoming experience for all clients.",
   },
 ];
 
@@ -30,7 +33,7 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
   const [selectedMember, setSelectedMember] = useState<{
     name: string;
     role: string;
-    image: string;
+    image: StaticImageData;
     description: string;
   } | null>(null);
 
@@ -40,6 +43,18 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
     })
   }, [])
 
+  const openModal = (member: {
+    name: string;
+    role: string;
+    image: StaticImageData;
+    description: string;
+  }) => {
+    setSelectedMember(member);
+  };
+  const closeModal = () => {
+    setSelectedMember(null);
+  };
+
   return (
     (<section ref={ref} id="team" className="px-8 py-40 bg-gray-100">
       <h2 className="about-section-motion-text text-6xl font-bold mb-20 text-center opacity-0">Meet Our Team</h2>
@@ -47,8 +62,9 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
       <div ref={membersContainer} className="flex flex-wrap justify-around gap-10">
         {teamMembers.map((member, index) => (
           <div
-            className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)]"
+            className="lg:p-5 w-[calc(50%-2.5rem)] lg:w-[calc(33%-2.5rem)] relative cursor-pointer transition-transform transform hover:scale-105"
             key={index}
+            onClick={() => openModal(member)}
           >
             {/* Image box */}
             <div className="relative w-full border overflow-hidden" style={{ paddingTop: '100%' }}>
@@ -67,6 +83,32 @@ const AboutSection = React.forwardRef((props, ref: React.ForwardedRef<HTMLElemen
           </div>
         ))}
       </div>
+      {/* Modal Popup */}
+      {selectedMember && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-x-hidden">
+          <div className="bg-white p-8 max-w-lg mx-auto relative transform transition-transform duration-200 scale-105 rounded-sm w-full max-w-md md:max-w-lg overflow-hidden">
+            {/* Close button */}
+            <div className="flex justify-end mb-4">
+              <button
+                className="text-gray-700 hover:text-gray-900 px-2 py-0 rounded-sm border"
+                onClick={closeModal}
+              >
+                X
+              </button>
+            </div>
+            <div className="relative h-60 w-full mb-6 overflow-hidden rounded-sm">
+              <Image
+                className="object-cover"
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                fill />
+            </div>
+            <h2 className="text-3xl font-bold mb-2">{selectedMember.name}</h2>
+            <h3 className="text-xl mb-4 text-gray-700">{selectedMember.role}</h3>
+            <p>{selectedMember.description}</p>
+          </div>
+        </div>
+      )}
     </section>)
   );
 })
